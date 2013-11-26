@@ -133,7 +133,7 @@ Public Class frmMain
                         keyCol = COL_PREFIX & setConstant(col.getName.Replace(" ", "_").Replace("-", "_").Substring(2)).ToUpper
                         keyVar = col.getName.Replace(" ", "").Replace("-", "")
                     End If
-                    key &= String.Format("{0}{1} & "" = {2}""", COL_PREFIX, setConstant(col.getName.Replace(" ", "_").Replace("-", "_").Substring(2)).ToUpper, IIf(col.getDbType.Contains("String"), "'?';", "?;"))
+                    key &= String.Format("""["" & {0}{1} & ""] = {2}""", COL_PREFIX, setConstant(col.getName.Replace(" ", "_").Replace("-", "_").Substring(2)).ToUpper, IIf(col.getDbType.Contains("String"), "'?';", "?;"))
                 End If
                 frm.lst.Items.Add("        " & String.Format("{0}Public Const {1}{2} AS String = ""{3}""", vbTab, COL_PREFIX, setConstant(col.getName.Replace(" ", "_").Replace("-", "_").Substring(2)).ToUpper, col.getName.Substring(2)))
             Next

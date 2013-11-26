@@ -95,7 +95,7 @@ Public Class SqlBuildCSharp
                         keyCol = COL_PREFIX & Main.setConstant(col.getName.Replace(" ", "_").Replace("-", "_").Substring(2)).ToUpper
                         keyVar = col.getName.Replace(" ", "").Replace("-", "")
                     End If
-                    key &= String.Format("[{0}{1}] + "" = {2}""", COL_PREFIX, Main.setConstant(col.getName.Replace(" ", "_").Replace("-", "_").Substring(2)).ToUpper, IIf(col.getDbType.Contains("String") Or col.getDbType.Contains("char"), "'?';", "?;"))
+                    key &= String.Format("""["" + {0}{1} + ""] = {2}""", COL_PREFIX, Main.setConstant(col.getName.Replace(" ", "_").Replace("-", "_").Substring(2)).ToUpper, IIf(col.getDbType.Contains("String") Or col.getDbType.Contains("char"), "'?';", "?;"))
                 End If
                 frm.lst.Items.Add("        " & String.Format("{0}public const string {1}{2} = ""{3}"";", vbTab, COL_PREFIX, Main.setConstant(col.getName.Replace(" ", "_").Replace("-", "_").Substring(2)).ToUpper, col.getName.Substring(2)))
             Next
@@ -111,7 +111,7 @@ Public Class SqlBuildCSharp
                 n += 1
             Next
             tw.WriteLine(String.Format("{0}{0}{0}"" FROM "" + TABLE +", vbTab))
-            tw.WriteLine(String.Format("{0}{0}{0}"" WHERE "" + {1} = ?;", vbTab, key))
+            tw.WriteLine(String.Format("{0}{0}{0}"" WHERE "" + {1}", vbTab, key))
             tw.WriteLine()
 
             ' LOAD_ALL Statement
