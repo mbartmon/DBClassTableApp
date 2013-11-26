@@ -112,16 +112,12 @@
     <Compile Include="frmMainSQL.Designer.vb">
       <DependentUpon>frmMainSQL.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmMainSQL.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frmMainSQL.vb" />
     <Compile Include="Main.vb" />
     <Compile Include="Progress.Designer.vb">
       <DependentUpon>Progress.vb</DependentUpon>
     </Compile>
-    <Compile Include="Progress.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Progress.vb" />
     <Compile Include="SqlBuildCSharp.vb" />
     <Compile Include="SqlBuildVB.vb" />
     <Compile Include="Table.vb" />
